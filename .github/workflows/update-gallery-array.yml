@@ -1,0 +1,32 @@
+name: Update Gallery Array
+
+on:
+  push:
+    paths:
+      - 'Docs/*.md'
+      - '.github/workflows/update-gallery-array.yml'
+
+jobs:
+  update-gallery-array:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update gallery.js files array
+        run: |
+          files=$(ls Docs/*.md | xargs -n1 basename | jq -R . | jq -s .)
+          awk 'BEGIN{print "const files = " ENVIRON["files"] ";"} /^\/\// || /^const files = /{next} {print}' gallery.js > gallery.js.tmp
+          mv gallery.js.tmp gallery.js
+
+      - name: Commit and push if gallery.js changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add gallery.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update gallery.js array from workflow"
+            git push
+          fi
