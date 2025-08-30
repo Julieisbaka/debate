@@ -1,6 +1,4 @@
-// The files array below is a backup and can be updated automatically by running update_gallery_files.ps1
-// Example: const files = ["Race is racist.md"];
-const files = ["Race is racist.md"];
+const files = [];
 const list = document.getElementById('md-list');
 
 if (files.length > 0) {
