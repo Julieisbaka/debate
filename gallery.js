@@ -20,6 +20,4 @@ if (files.length > 0) {
         li.appendChild(a);
         list.appendChild(li);
     });
-} else {
-    list.innerHTML = '<li><em>No markdown files found in Docs/</em></li>';
-}
+};
