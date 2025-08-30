@@ -50,14 +50,16 @@ async function loadAndRenderMarkdown() {
             tocDiv.innerHTML = '';
         }
         contentDiv.innerHTML = html;
-        // Set tab title to first header
+        // Set tab title to first header, or fallback to file name (without extension)
         const firstHeader = contentDiv.querySelector('h1, h2, h3, h4, h5, h6');
         if (firstHeader) {
             document.title = firstHeader.textContent;
             document.getElementById('main-title').textContent = firstHeader.textContent;
         } else {
-            document.title = 'Markdown Viewer';
-            document.getElementById('main-title').textContent = 'Markdown Viewer';
+            // Get file name without extension
+            let fileName = file.split('/').pop().replace(/\.md$/i, '');
+            document.title = fileName;
+            document.getElementById('main-title').textContent = fileName;
         }
         // Render MathJax
         if (window.MathJax) {
