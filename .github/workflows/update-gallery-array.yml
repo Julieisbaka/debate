@@ -5,6 +5,7 @@ on:
     paths:
       - 'Docs/*.md'
       - '.github/workflows/update-gallery-array.yml'
+  workflow_dispatch:
 
 jobs:
   update-gallery-array:
@@ -16,8 +17,8 @@ jobs:
       - name: Update gallery.js files array
         run: |
           files=$(ls Docs/*.md | xargs -n1 basename | jq -R . | jq -s .)
-          awk -v arr="const files = "arr";" '
-            BEGIN {replaced=0}
+          awk -v files_arr="$files" '
+            BEGIN {arr="const files = " files_arr ";"; replaced=0}
             /^const files = \[.*\];/ && !replaced {print arr; replaced=1; next}
             {print}
           ' gallery.js > gallery.js.tmp
