@@ -2,9 +2,8 @@ function getMarkdownFileFromURL() {
     const params = new URLSearchParams(window.location.search);
     let file = params.get('file');
     if (!file) return null;
-    // Only allow files in Docs folder
-    if (!file.startsWith('Docs/')) file = 'Docs/' + file;
-    return file;
+    // Always fetch from Docs folder
+    return 'Docs/' + file.replace(/^.*[\\\/]/, '');
 }
 
 function generateTOC(html) {
