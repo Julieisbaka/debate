@@ -36,7 +36,11 @@ async function loadAndRenderMarkdown() {
         const response = await fetch(file);
         if (!response.ok) throw new Error('File not found');
         const md = await response.text();
-        let html = marked.parse(md);
+        // Add support for ==underline== and %%highlight%%
+        let enhancedMd = md
+            .replace(/==([^=]+)==/g, '<u>$1</u>')
+            .replace(/%%([^%]+)%%/g, '<mark>$1</mark>');
+        let html = marked.parse(enhancedMd);
         // Table of Contents
         const tocResult = generateTOC(html);
         if (tocResult) {
