@@ -16,7 +16,11 @@ jobs:
       - name: Update gallery.js files array
         run: |
           files=$(ls Docs/*.md | xargs -n1 basename | jq -R . | jq -s .)
-          awk 'BEGIN{print "const files = " ENVIRON["files"] ";"} /^\/\// || /^const files = /{next} {print}' gallery.js > gallery.js.tmp
+          awk -v arr="const files = "arr";" '
+            BEGIN {replaced=0}
+            /^const files = \[.*\];/ && !replaced {print arr; replaced=1; next}
+            {print}
+          ' gallery.js > gallery.js.tmp
           mv gallery.js.tmp gallery.js
 
       - name: Commit and push if gallery.js changed

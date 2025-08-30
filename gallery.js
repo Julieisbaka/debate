@@ -1,4 +1,4 @@
-const files = ;
+const files = [];
 const list = document.getElementById('md-list');
 
 if (files.length > 0) {
