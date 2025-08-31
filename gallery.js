@@ -1,4 +1,4 @@
-const files = ["race is racist"];
+const files = ["Race is racist.md"];
 const list = document.getElementById('md-list');
 
 if (files.length > 0) {
