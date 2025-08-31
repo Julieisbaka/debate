@@ -1,3 +1,23 @@
+/* Animated loading dots */
+.loading-dots {
+	display: inline-block;
+	font-size: 1.2em;
+	letter-spacing: 2px;
+}
+.loading-dots span {
+	opacity: 0.3;
+	animation: blink 1.4s infinite both;
+}
+.loading-dots span:nth-child(2) {
+	animation-delay: 0.2s;
+}
+.loading-dots span:nth-child(3) {
+	animation-delay: 0.4s;
+}
+@keyframes blink {
+	0%, 80%, 100% { opacity: 0.3; }
+	40% { opacity: 1; }
+}
 /* Highlight color buttons */
 
 .highlight-btn {
@@ -9,8 +29,10 @@
 	outline: none;
 	transition: border 0.2s;
 }
-.highlight-btn:hover, .highlight-btn.selected {
+.highlight-btn:hover, .highlight-btn.selected, .highlight-btn:focus {
 	border: 2px solid #333;
+	outline: 2px solid #0074d9;
+	outline-offset: 1px;
 }
 mark[data-color="yellow"] {
 	background: #fff700;

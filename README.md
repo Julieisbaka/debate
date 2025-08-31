@@ -27,13 +27,11 @@
 
 4. **Configure the Git plugin**
 
-- Set the commit message and auto-commit message to `Obsidian change` (case-sensitive).
 - Authenticate with GitHub and connect the vault to the repository if prompted.
 
 1. **Syncing Notes**
 
 - Use the Git plugin to commit and push changes.
-- When the commit message is `Obsidian change`, markdown files will be automatically moved to the `Docs/` folder if they are not there already and published to GitHub Pages.
 
 ---
 
