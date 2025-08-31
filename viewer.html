@@ -9,7 +9,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="main-title">Markdown Viewer</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 id="main-title">Markdown Viewer</h1>
+        <div id="highlight-color-buttons" style="display: flex; gap: 0.5em; position: absolute; top: 2em; right: 2em;">
+            <button class="highlight-btn" data-color="yellow" title="Yellow Highlight" style="background: #fff700;"></button>
+            <button class="highlight-btn" data-color="green" title="Green Highlight" style="background: #39ff14;"></button>
+            <button class="highlight-btn" data-color="blue" title="Blue Highlight" style="background: #00f0ff;"></button>
+        </div>
+    </div>
     <nav id="toc" style="margin-bottom:2em;"></nav>
     <a href="gallery.html" style="display:inline-block;margin-bottom:1em;">&larr; Back to Gallery</a>
     <div id="content">Loading...</div>

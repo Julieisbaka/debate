@@ -1,3 +1,29 @@
+/* Highlight color buttons */
+
+.highlight-btn {
+	width: 28px;
+	height: 28px;
+	border: 2px solid #ccc;
+	border-radius: 50%;
+	cursor: pointer;
+	outline: none;
+	transition: border 0.2s;
+}
+.highlight-btn:hover, .highlight-btn.selected {
+	border: 2px solid #333;
+}
+mark[data-color="yellow"] {
+	background: #fff700;
+	color: #222;
+}
+mark[data-color="green"] {
+	background: #39ff14;
+	color: #222;
+}
+mark[data-color="blue"] {
+	background: #00f0ff;
+	color: #222;
+}
 body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
 h1 { margin-bottom: 1em; }
 ul { list-style: none; padding: 0; }
