@@ -1,4 +1,4 @@
-const files = arr;
+const files = ["race is racist"];
 const list = document.getElementById('md-list');
 
 if (files.length > 0) {
