@@ -59,8 +59,8 @@ async function loadAndRenderMarkdown() {
         const md = await response.text();
         // Add support for ==underline== and %%highlight%%
         let enhancedMd = md
-            .replace(/==([^=]+)==/g, '<u>$1</u>')
-            .replace(/%%([^%]+)%%/g, function(_, text) {
+            .replace(/%%([^%]+)%%/g, '<u>$1</u>')
+            .replace(/==([^=]+)==/g, function(_, text) {
                 const color = localStorage.getItem('highlightColor') || 'yellow';
                 return `<mark data-color="${color}">${text}</mark>`;
             });
